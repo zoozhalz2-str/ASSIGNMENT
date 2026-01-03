@@ -1,27 +1,27 @@
 Algorithm HealthDataEntry
-Input: UserHealthData[]  
+Input: UserHealthData[]
 Output: ConfirmationMessages[]
 
-Set counter = 0
-1. For each entry in UserHealthData do
-2.     counter = counter + 1
-3.     If entry.BloodSugar > 0 AND entry.HeartRate > 0 AND entry.BloodPressure != "" then
-4.         Save entry to Database
-5.         Append "Data Saved Successfully" to ConfirmationMessages
-6.     Else
-7.         Append "Invalid Data, Please Re-enter" to ConfirmationMessages
-8.     End If
-9. End For
+Set entryCount = 0
+Initialize ConfirmationMessages as empty list
 
-10. Return ConfirmationMessages
-1. For each entry in UserHealthData do
-2.     If entry.BloodSugar > 0 AND entry.HeartRate > 0 AND entry.BloodPressure != "" then
-3.         Save entry to Database
-4.         Append "Data Saved Successfully" to ConfirmationMessages
-5.     Else
-6.         Append "Invalid Data, Please Re-enter" to ConfirmationMessages
-7.     End If
-8. End For
+For each entry in UserHealthData do
+    entryCount = entryCount + 1
 
-9. Return ConfirmationMessages
+    If entry.BloodSugar >= 70 AND entry.BloodSugar <= 180
+       AND entry.HeartRate > 0
+       AND entry.BloodPressure != "0/0" then
+
+        Save entry to Database
+        Append "Entry " + entryCount + " Saved Successfully" 
+        to ConfirmationMessages
+
+    Else
+        Append "Entry " + entryCount + " Invalid Input Detected"
+        to ConfirmationMessages
+    End If
+
+End For
+
+Return ConfirmationMessages
 End Algorithm
