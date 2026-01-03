@@ -1,5 +1,5 @@
 Algorithm HealthDataEntry
-Input: UserHealthData[]  // array of daily health readings
+Input: UserHealthData[]  
 Output: ConfirmationMessages[]
 
 1. For each entry in UserHealthData do
